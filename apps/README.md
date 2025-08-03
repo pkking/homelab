@@ -15,10 +15,12 @@ the structure looks like:
 # usage
 When bootstrap a new argocd, run [argo cli](https://argo-cd.readthedocs.io/en/stable/cli_installation/)
 ```
+argocd login <url to argocd>
 argocd app create apps \
+    --sync-option auto
     --dest-namespace argocd \
     --dest-server https://kubernetes.default.svc \
     --repo https://github.com/pkking/homelab.git \
     --path apps
-argocd app sync apps  
 ```
+This will automated sync all apps in cluster right now!
