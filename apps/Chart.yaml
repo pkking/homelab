@@ -1,0 +1,9 @@
+apiVersion: v2
+appVersion: 0.1.0
+description: A Helm chart to install pkking's homelab argocd applications
+home: https://github.com/pkking/homelab
+maintainers:
+- name: pkking
+name: pkking-homelab-argo-apps
+type: application
+version: 0.1.0
