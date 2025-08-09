@@ -1,25 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: argo-workflows
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   sources:
-  - repoURL: https://charts.jetstack.io
-    chart: cert-manager
-    targetRevision: v1.18.2
+  - repoURL: https://argoproj.github.io/argo-helm
+    targetRevision: 0.45.21
+    chart: argo-workflows
     helm:
       valueFiles:
-      - $values/app_configs/cert_values.yaml
+      - $values/app_configs/argowf_values.yaml
   - repoURL: 'https://github.com/pkking/homelab.git'
     targetRevision: main
     ref: values
   destination:
     server: https://kubernetes.default.svc
-    namespace: cert-manager
+    namespace: argo-workflows
   syncPolicy:
     automated:
       prune: true

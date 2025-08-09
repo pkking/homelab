@@ -1,0 +1,80 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.code-workspace
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Kubernetes & Helm
+*.tgz
+charts/
+*.lock
+
+# Logs
+logs/
+*.log
+
+# Secrets and sensitive files
+*.env
+.env.*
+secrets/
+*.secret
+*.key
+*.crt
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+crash.log
+
+# Misc
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# Docker
+*.pid
+*.sock
+docker-compose.override.yml
+
+# Backup files
+*~
+*.bak
+*.old
+
+# Test output
+coverage/
+junit.xml
+
+# Custom
+app_configs/*.local.yaml

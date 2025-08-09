@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  schema:
+    name: CI
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: 'yaml lint'
+      uses: karancode/yamllint-github-action@master
+      with:
+        yamllint_file_or_dir: app_configs
+        yamllint_strict: false
+        yamllint_comment: true
+      env:
+        GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set up Kubeconform
+      uses: bmuschko/setup-kubeconform@v1
+
+    - name: Validate manifests
+      run: |
+        export SCHEMA=https://github.com/argoproj/argo-schema-generator/raw/refs/heads/main/schema/argo_all_k8s_kustomize_schema.json
+        kubeconform -schema-location $SCHEMA -summary -verbose apps/templates

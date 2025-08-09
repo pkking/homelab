@@ -131,18 +131,18 @@ image:
       tag: v2.16.0-20250709
   openshift:
     oauthProxy:
-      # -- Registry for the OAuth Proxy image. Specify the upstream image (for example, "quay.io/openshift/origin-oauth-proxy"). This setting applies only to OpenShift users.
+      # -- Registry for the OAuth Proxy image. Specify the upstream image (for example, "quay.m.daocloud.io/openshift/origin-oauth-proxy"). This setting applies only to OpenShift users.
       registry: ""
-      # -- Repository for the OAuth Proxy image. Specify the upstream image (for example, "quay.io/openshift/origin-oauth-proxy"). This setting applies only to OpenShift users.
+      # -- Repository for the OAuth Proxy image. Specify the upstream image (for example, "quay.m.daocloud.io/openshift/origin-oauth-proxy"). This setting applies only to OpenShift users.
       repository: ""
-      # -- Tag for the OAuth Proxy image. Specify OCP/OKD version 4.1 or later (including version 4.15, which is available at quay.io/openshift/origin-oauth-proxy:4.15). This setting applies only to OpenShift users.
+      # -- Tag for the OAuth Proxy image. Specify OCP/OKD version 4.1 or later (including version 4.15, which is available at quay.m.daocloud.io/openshift/origin-oauth-proxy:4.15). This setting applies only to OpenShift users.
       tag: ""
   # -- Image pull policy that applies to all user-deployed Longhorn components, such as Longhorn Manager, Longhorn driver, and Longhorn UI.
   pullPolicy: IfNotPresent
 service:
   ui:
     # -- Service type for Longhorn UI. (Options: "ClusterIP", "NodePort", "LoadBalancer", "Rancher-Proxy")
-    type: ClusterIP
+    type: LoadBalancer
     # -- NodePort port number for Longhorn UI. When unspecified, Longhorn selects a free port between 30000 and 32767.
     nodePort: null
   manager:
@@ -314,7 +314,7 @@ defaultSettings:
   guaranteedInstanceManagerCPU: ~
   # -- Setting that notifies Longhorn that the cluster is using the Kubernetes Cluster Autoscaler.
   kubernetesClusterAutoscalerEnabled: ~
-  # -- Enables Longhorn to automatically delete orphaned resources and their associated data or processes (e.g., stale replicas). Orphaned resources on failed or unknown nodes are not automatically cleaned up. 
+  # -- Enables Longhorn to automatically delete orphaned resources and their associated data or processes (e.g., stale replicas). Orphaned resources on failed or unknown nodes are not automatically cleaned up.
   # You need to specify the resource types to be deleted using a semicolon-separated list (e.g., `replica-data;instance`). Available items are: `replica-data`, `instance`.
   orphanResourceAutoDeletion: ~
   # -- Specifies the wait time, in seconds, before Longhorn automatically deletes an orphaned Custom Resource (CR) and its associated resources.
