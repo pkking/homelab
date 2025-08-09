@@ -34,8 +34,5 @@ jobs:
         ls .
         ls ..
         pwd
-    - uses: nrkno/yaml-schema-validator-github-action@v5
-      with:
-        schema: ../argo-schema-generator/schema/argo_all_k8s_kustomize_schema.json
-        target: apps/templates/
-      
+        pip install yamale
+        yamale -s ../argo-schema-generator/schema/argo_all_k8s_kustomize_schema.json ./apps/templates
