@@ -30,7 +30,7 @@ crds:
 global:
   image:
     # -- If defined, a repository applied to all Argo Events deployments
-    repository: m.daocloud.io/quay.io/argoproj/argo-events
+    repository: quay.m.daocloud.io/argoproj/argo-events
     # -- Overrides the global Argo Events image tag whose default is the chart appVersion
     tag: ""
     # -- If defined, a imagePullPolicy applied to all Argo Events deployments

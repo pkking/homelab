@@ -480,7 +480,7 @@ server:
   baseHref: /
   image:
     # -- Registry to use for the server
-    registry: quay.m.daocloud.io	
+    registry: quay.m.daocloud.io
     # -- Repository to use for the server
     repository: argoproj/argocli
     # -- Image tag for the Argo Workflows server. Defaults to `.Values.images.tag`.

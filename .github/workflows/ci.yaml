@@ -1,4 +1,4 @@
-name: Action tests
+name: CI
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   schema:
-    name: Run tests
+    name: CI
     runs-on: ubuntu-latest
 
     strategy:
@@ -30,7 +30,8 @@ jobs:
         yamllint_comment: true
       env:
         GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - run: |
+    - name: run schema check
+      run: |
         ls .
         ls ..
         pwd
