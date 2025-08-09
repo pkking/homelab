@@ -29,4 +29,4 @@ jobs:
     - name: Validate manifests
       run: |
         export SCHEMA=https://github.com/argoproj/argo-schema-generator/raw/refs/heads/main/schema/argo_all_k8s_kustomize_schema.json
-        kubeconform -schema-location $SCHEMA -summary -verbose app_configs
+        kubeconform -schema-location $SCHEMA -summary -verbose apps/templates
