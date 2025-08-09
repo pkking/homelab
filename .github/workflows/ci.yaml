@@ -12,10 +12,6 @@ jobs:
   schema:
     name: CI
     runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: false
-
     steps:
     - uses: actions/checkout@v4
     - name: 'yaml lint'
@@ -26,13 +22,11 @@ jobs:
         yamllint_comment: true
       env:
         GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: fetch schema
+
+    - name: Set up Kubeconform
+      uses: bmuschko/setup-kubeconform@v1
+
+    - name: Validate manifests
       run: |
-        curl -OL https://github.com/argoproj/argo-schema-generator/raw/refs/heads/main/schema/argo_all_k8s_kustomize_schema.json
-    - uses: bieggerm/yamale-action@v2
-      name: yamale check
-      with:
-        base_dir: "./apps/templates"
-        schema: "./argo_all_k8s_kustomize_schema.json" 
-        include_subdir: true  
-        filename: "*.yaml"
+        export SCHEMA=https://github.com/argoproj/argo-schema-generator/raw/refs/heads/main/schema/argo_all_k8s_kustomize_schema.json
+        kubeconform -schema-location $SCHEMA -summary -verbose app_configs
