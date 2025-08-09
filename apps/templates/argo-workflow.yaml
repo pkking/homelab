@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-workflows
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+  - repoURL: https://argoproj.github.io/argo-helm
+    targetRevision: 0.45.21
+    chart: argo-workflows
+    helm:
+      valueFiles:
+      - $values/app_configs/argowf_values.yaml
+  - repoURL: 'https://github.com/pkking/homelab.git'
+    targetRevision: main
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argo-workflows
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

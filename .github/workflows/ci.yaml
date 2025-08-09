@@ -1,0 +1,41 @@
+name: Action tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  schema:
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        repository: 'argoproj/argo-schema-generator'
+        path: 'argo-schema-generator'
+    - uses: actions/checkout@v4
+    - name: 'yaml lint'
+      uses: karancode/yamllint-github-action@master
+      with:
+        yamllint_file_or_dir: app_configs
+        yamllint_strict: true
+        yamllint_comment: true
+      env:
+        GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - run: |
+        ls .
+        ls ..
+        pwd
+    - uses: nrkno/yaml-schema-validator-github-action@v5
+      with:
+        schema: ../argo-schema-generator/schema/argo_all_k8s_kustomize_schema.json
+        target: apps/templates/
+      
