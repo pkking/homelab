@@ -31,9 +31,9 @@ jobs:
       env:
         GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: bieggerm/yamale-action@v2
-      name: lint-yaml
+      name: yamale check
       with:
         base_dir: "./apps/templates"
-        schema: "../argo-schema-generator/schema/argo_all_k8s_kustomize_schema.json" 
+        schema: "./argo-schema-generator/schema/argo_all_k8s_kustomize_schema.json" 
         include_subdir: true  
         filename: "*.yaml"
