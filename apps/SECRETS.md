@@ -7,7 +7,7 @@ kubectl create secret generic bw-auth-token -n sm-operator-system --from-literal
 
 fill the DSM info
 ```
-# cat client-info.yaml
+# cat dsm-info.yml
 clients:
 - host: 192.168.1.1
     https: false
