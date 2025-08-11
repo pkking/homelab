@@ -1,9 +1,9 @@
 ---
 # Specifies affinity, nodeSelector and tolerations for the controller StatefulSet
 controller:
-  affinity: { }
-  nodeSelector: { }
-  tolerations: [ ]
+  affinity: {}
+  nodeSelector: {}
+  tolerations: []
 fullnameOverride: ""
 images:
   # https://kubernetes-csi.github.io/docs/external-attacher.htmlis
@@ -40,17 +40,17 @@ installCSIDriver: true
 nameOverride: ""
 # Specifies affinity, nodeSelector and tolerations for the node DaemonSet
 node:
-  affinity: { }
+  affinity: {}
   # If your kubelet path is not standard, specify it here :
   # example for miocrok8s distrib : /var/snap/microk8s/common/var/lib/kubelet
   kubeletPath: /var/lib/kubelet
-  nodeSelector: { }
-  tolerations: [ ]
+  nodeSelector: {}
+  tolerations: []
 # Specifies affinity, nodeSelector and tolerations for the snapshotter StatefulSet
 snapshotter:
-  affinity: { }
-  nodeSelector: { }
-  tolerations: [ ]
+  affinity: {}
+  nodeSelector: {}
+  tolerations: []
 storageClasses:
   iscsi-delete:
     ## Optional: `true` or `false` (default):
@@ -101,9 +101,9 @@ storageClasses:
       protocol: smb
     reclaimPolicy: Retain
 test:
-  affinity: { }
-  nodeSelector: { }
-  tolerations: [ ]
+  affinity: {}
+  nodeSelector: {}
+  tolerations: []
 volumeSnapshotClasses:
   delete:
     ## One of true or false (default):
