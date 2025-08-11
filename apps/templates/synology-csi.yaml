@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: synology-csi
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+  - repoURL: https://christian-schlichtherle.github.io/synology-csi-chart
+    targetRevision: 0.10.1
+    chart: synology-csi
+    helm:
+      valueFiles:
+      - $values/app_configs/synology_csi_values.yaml
+  - repoURL: 'https://github.com/pkking/homelab.git'
+    targetRevision: main
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: synology-csi-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
