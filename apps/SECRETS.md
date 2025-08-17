@@ -1,3 +1,6 @@
+# Secrets
+All the secrets the homelab needed
+
 ## bitwarden
 ```
 kubectl create secret generic bw-auth-token -n sm-operator-system --from-literal=token="<TOKEN_HERE>"
@@ -8,19 +11,20 @@ kubectl create secret generic bw-auth-token -n sm-operator-system --from-literal
 fill the DSM info
 ```
 # cat dsm-info.yml
-clients:
-- host: 192.168.1.1
-    https: false
-    password: changeme
-    port: 5000
-    username: changeme
-- host: 192.168.1.1
-    https: true
-    password: changeme
-    port: 5001
-    username: changeme
+apiVersion: v1
+kind: Secret
+metadata:
+  name: synology-csi-client-info
+stringData:
+  client-info.yaml: |
+    clients:
+    - host: 192.168.50.225
+      https: false
+      password: Pkking@123
+      port: 5000
+      username: pkking
 ```
 create secret
 ```
-kubectl create secret -n synology-csi-system generic client-info-secret --from-file=dsm-info.yml
+kubectl apply -f dsm-info.yaml -n synology-csi-system
 ```
