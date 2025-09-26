@@ -4,12 +4,12 @@ metadata:
   name: bitwarden-sm
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: https://charts.bitwarden.com/
-    targetRevision: 0.1.0
+    targetRevision: 1.0.0
     chart: sm-operator
   destination:
     server: https://kubernetes.default.svc
