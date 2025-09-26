@@ -6,6 +6,8 @@ All the secrets the homelab needed
 kubectl create secret generic bw-auth-token -n sm-operator-system --from-literal=token="<TOKEN_HERE>"
 ```
 
+The `TOKEN_HERE` should be the [access token](https://bitwarden.com/help/access-tokens/) created in [machine account](https://bitwarden.com/help/machine-accounts/)
+
 ## synology csi
 
 fill the DSM info
