@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     path: crds/postgresql
-    repoURL: "https://github.com/pkking/homelab"
+    repoURL: "https://github.com/pkking/homelab.git"
     targetRevision: HEAD
   destination:
     namespace: postgres
