@@ -1,36 +1,27 @@
-# argocd applications archived
-This dir contains all my cluster argocd applications declarative yamls, inspired by [app of apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/)
-
-the structure looks like:
-```
-├── Chart.yaml
-├── templates
-│   ├── guestbook.yaml
-│   ├── helm-dependency.yaml
-│   ├── helm-guestbook.yaml
-│   └── kustomize-guestbook.yaml
-└── values.yaml 
+# Apps
+This directory contains all of the applications you installed by using:
+```bash
+argocd-autopilot app create <APP_NAME> --app <APP_SPECIFIER> -p <PROJECT_NAME>
 ```
 
-# usage
-When bootstrap a new argocd, run [argo cli](https://argo-cd.readthedocs.io/en/stable/cli_installation/)
-```
-argocd login <url to argocd>
-argocd app create apps \
-    --sync-option auto
-    --dest-namespace argocd \
-    --dest-server https://kubernetes.default.svc \
-    --repo https://github.com/pkking/homelab.git \
-    --path apps
-```
-This will automated sync all apps in cluster right now!
+## Application Types
+> If you don't specify the application `--type` argocd-autopilot will try to clone the source repository and infer the application type [automatically](https://argoproj.github.io/argo-cd/user-guide/tool_detection/#tool-detection)
 
-# bootstrap
+* ### Directory application
+  Such an application references a specific directory at a given repo URL, path and revision. It will be persisted in the GitOps Repository as a single file at `apps/<APP_NAME>/<PROJECT_NAME>/config.json`.  
+  #### Example:  
+  ```bash
+  argocd-autopilot app create dir-example --app github.com/argoproj-labs/argocd-autopilot/examples/demo-dir/ -p <PROJECT_NAME> --type dir
+  ```
 
-Before creating the apps application as described above, you need to bootstrap your cluster with Argo CD.
-Follow the instructions in [docs/bootstrap.md](../docs/bootstrap.md) to install Argo CD in your clean Kubernetes cluster.
+* ### Kustomize application
+  A Kustomize application will have <u>exactly one</u>: `apps/<APP_NAME>/base/kustomization.yaml` file, and one or more `apps/<APP_NAME>/overlays/<PROJECT_NAME>/` folders.
 
-After successfully installing Argo CD, you can proceed with creating the apps application using the commands above.
+  The `apps/<APP_NAME>/base/kustomization.yaml` file is created the first time you create the application. The `apps/<APP_NAME>/overlays/<PROJECT_NAME>/` folder is created for each project you install this application on. So all overlays of the same application are using the same base `kustomization.yaml`.
+  #### Example:
+  Try running the following command:
+  ```bash
+  argocd-autopilot app create hello-world --app github.com/argoproj-labs/argocd-autopilot/examples/demo-app/ -p <PROJECT_NAME> --type kustomize
+  ```
 
-** NOTE **:
-1. IF WE want to update the `synology-csi storageclass`, need delete original storageclass manually
+###### * If you did not create a project yet take a look at: [creating a project](https://argocd-autopilot.readthedocs.io/en/stable/Getting-Started/#add-a-project-and-an-application).
