@@ -1,3 +1,9 @@
+# 总体
+要初始化一个新的k8s集群，需要几个步骤
+- [安装k8s](https://docs.k3s.io/quick-start)
+- [安装argoCD](#在干净的-kubernetes-集群中安装-argo-cd)
+- [安装OLM](https://github.com/operator-framework/operator-lifecycle-manager/blob/master/doc/install/install.md#install-with-operator-sdk-olm-install)
+
 # 在干净的 Kubernetes 集群中安装 Argo CD
 
 本文档描述了如何在一个干净的 Kubernetes 集群中安装和配置 Argo CD。

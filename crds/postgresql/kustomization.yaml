@@ -1,0 +1,4 @@
+resources:
+  - cluster.yaml
+  - secrets.yaml
+namespace: postgres

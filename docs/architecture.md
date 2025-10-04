@@ -11,6 +11,8 @@ This document outlines the architecture design of the Homelab Cloud Native proje
 
 ### 2. GitOps Principles
 - **Version Control**: All deployment configurations and service definitions will be stored in a Git repository. This allows for versioning and easy rollback of configurations.
+    - For statless applications, deployed using [helm][1] and [argo cd][2]
+    - For statful applications, deployed using [OLM][3]
 - **Continuous Deployment**: A CI/CD pipeline will be set up to automatically deploy changes to the Kubernetes cluster whenever updates are pushed to the repository. Tools like ArgoCD or Flux will be utilized to manage the deployment process, ensuring that the cluster state matches the desired state defined in Git.
 
 ### 3. Blue-Green Deployment
@@ -25,3 +27,7 @@ This document outlines the architecture design of the Homelab Cloud Native proje
 
 ## Conclusion
 The architecture of the Homelab Cloud Native project is designed to leverage cloud-native technologies to provide a robust, scalable, and secure environment for deploying services. By adhering to GitOps principles, implementing a secret management solution, and utilizing blue-green deployment strategies, the project aims to ensure high availability and maintainability of services in a home lab setting.
+
+[1]: https://argo-cd.readthedocs.io/en/stable/
+[2]: https://helm.sh/
+[3]: https://olm.operatorframework.io/

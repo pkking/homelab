@@ -1,19 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: postgresql
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+  name: bitwarden-secret
 spec:
   project: default
   source:
-    repoURL: oci://registry-1.docker.io/bitnamicharts/postgresql
-    targetRevision: 16.7.27
-    chart: postgresql
+    path: crds/postgresql
+    repoURL: "https://github.com/pkking/homelab"
+    targetRevision: HEAD
   destination:
-    server: https://kubernetes.default.svc
-    namespace: postgresql
+    namespace: postgres
+    server: "https://kubernetes.default.svc"
   syncPolicy:
     automated:
       prune: true
