@@ -3,7 +3,7 @@ kind: Application
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "3"
-  name: bitwarden-secret
+  name: postgres-cluster
 spec:
   project: default
   source:

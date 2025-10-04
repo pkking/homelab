@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: postgresql
+  name: postgresql-operator
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -13,9 +13,6 @@ spec:
     repoURL: "https://github.com/pkking/homelab.git"
     targetRevision: HEAD
     path: operators/postgresql
-    helm:
-      valueFiles:
-        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: postgres-operator
