@@ -13,7 +13,11 @@ The kubernetes secret is base64 encoded, which is not secure enough for sensitiv
 We chose the Bitwarden SM Operator for secret management because it offers [kubernetes integration][1], allowing secrets to be injected into pods at runtime. Additionally, it provides a web console for online editing of secrets, making it convenient for users to manage sensitive information on the go.
 
 #### future plan
+##### External secret operator
 bitwarden sm operator is integrated with [external secret operator](https://external-secrets.io/), a more generic secret manager operator. In the future, we may switch to other secret managers supported by external secret operator, such as AWS Secrets Manager or HashiCorp Vault, if our requirements change.
+
+##### Sops
+In our BitWardenSecret custom resources, we use inline orgid and secret id, which may expose some sensitive information. To mitigate this risk, we may also consider using [SOPS](https://github.com/mozilla/sops) (Secrets OPerationS) for managing secrets in our GitOps workflow. SOPS allows us to encrypt specific parts of our YAML files, ensuring that sensitive information is protected while still being version-controlled. This can be particularly useful for managing secrets in Git repositories without exposing them in plaintext.
 
 ### GitOps Principles
 To adhere to GitOps principles, we decided to use Argo CD for continuous deployment. Argo CD allows us to store all deployment configurations in a Git repository, enabling version control and easy rollbacks. Whenever changes are pushed to the repository, Argo CD automatically deploys the updates to the Kubernetes cluster, ensuring that the cluster state matches the desired state defined in Git.

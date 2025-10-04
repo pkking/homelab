@@ -9,7 +9,7 @@ spec:
   source:
     path: crds/postgresql
     repoURL: "https://github.com/pkking/homelab.git"
-    targetRevision: HEAD
+    targetRevision: main
   destination:
     namespace: postgres
     server: "https://kubernetes.default.svc"
