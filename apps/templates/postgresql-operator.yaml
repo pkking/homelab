@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bitwarden-sm
+  name: postgresql-operator
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   project: default
   source:
-    repoURL: https://charts.bitwarden.com/
-    targetRevision: 1.0.0
-    chart: sm-operator
+    repoURL: "https://github.com/pkking/homelab.git"
+    targetRevision: main
+    path: operators/postgresql
   destination:
     server: https://kubernetes.default.svc
-    namespace: sm-operator-system
+    namespace: postgres-operator
   syncPolicy:
     automated:
       prune: true

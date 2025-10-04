@@ -1,0 +1,25 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgresql
+  description: "this pg is used by all homelab apps"
+spec:
+  instances: 1
+  superuserSecret: "pg-superuser"
+  enableSuperuserAccess: true
+  storage:
+    size: 20Gi
+    storageClass: "synology-csi-nfs-retain"
+  postgresql:
+    pg_hba:
+      - host all all 10.42.0.0/16 password
+  bootstrap:
+    initdb:
+      database: n8n
+      owner: n8n
+      secret:
+        name: n8n-user
+    # Alternative bootstrap method: start from a backup
+    #recovery:
+    #  backup:
+    #    name: backup-example
