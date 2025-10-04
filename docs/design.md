@@ -24,7 +24,6 @@ To adhere to GitOps principles, we decided to use Argo CD for continuous deploym
 - For CRDs, we use argo cd to deploy them, so that we can manage the version of CRDs using git. See [crds/README.md](../crds/README.md) for more details.
 
 ### Combine operator and crds to deploy stateful applications
-For stateful applications, we use a combination of operators and Custom Resource Definitions (CRDs)
-    to manage their deployment and lifecycle. Operators provide a way to automate the management of complex applications, while CRDs allow us to define custom resources that represent the desired state of these applications.
+For stateful applications, we use a combination of operators and Custom Resource Definitions (CRDs) to manage their deployment and lifecycle. Operators provide a way to automate the management of complex applications, while CRDs allow us to define custom resources that represent the desired state of these applications.
     
 [1]: https://bitwarden.com/help/secrets-manager-kubernetes-operator/
