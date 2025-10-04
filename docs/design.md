@@ -1,4 +1,4 @@
-# Design descision
+# Design Decision
 ## Problems
 When designing the system, we faced several challenges:
 1. **Secret Management**: Ensuring that sensitive information such as API keys, passwords, and tokens are securely managed and easily accessible.
