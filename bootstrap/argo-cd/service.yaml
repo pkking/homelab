@@ -1,0 +1,12 @@
+# This file is a Kustomize patch for the argocd-server Service.
+# It is not intended to be applied directly with kubectl.
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/component: server
+    app.kubernetes.io/name: argocd-server
+    app.kubernetes.io/part-of: argocd
+  name: argocd-server
+spec:
+  type: Loadbalancer
