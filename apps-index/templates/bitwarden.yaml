@@ -6,7 +6,7 @@ spec:
   generators:
   - list:
       elements:
-      - namespace: postgresql-operator
+      - ns: postgresql-operator
 template:
   metadata:
     name: bitwarden-sm
@@ -23,7 +23,7 @@ template:
       chart: sm-operator
     destination:
       server: https://kubernetes.default.svc
-      namespace: {{.namespace}}
+      namespace: {{.ns}}
     syncPolicy:
       automated:
         prune: true
