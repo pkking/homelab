@@ -4,7 +4,7 @@ metadata:
   name: bitwarden-secrets
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "3"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -14,7 +14,6 @@ spec:
   - list:
       elements:
       - ns: postgresql-operator
-      - ns: sm-operator-system
   template:
     metadata:
       name: bitwarden-sm
