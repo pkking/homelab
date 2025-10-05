@@ -5,5 +5,10 @@ resources:
   - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.20
 
 patches:
-  - path: service.yaml
   - path: health-check.yaml
+  - target:
+      version: v1
+      Kind: Service
+      name: argocd-server
+    path: service.yaml
+
