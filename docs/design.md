@@ -3,7 +3,7 @@
 When designing the system, we faced several challenges:
 1. **Secret Management**: Ensuring that sensitive information such as API keys, passwords, and tokens are securely managed and easily accessible.
 2. **GitOps Principles**: Implementing a deployment strategy that adheres to GitOps principles, allowing for version-controlled configurations and easy rollbacks.
-3. **Argo CD Deployment**: It's  important to manage argocd itself using gitops, so that we can easily reconstruct the entire cluster using git.
+3. **Argo CD Deployment**: It's important to manage argocd itself using gitops, so that we can easily reconstruct the entire cluster using git.
 
 ## Solutions
 ### Secret Management
