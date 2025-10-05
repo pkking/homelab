@@ -6,7 +6,7 @@ spec:
   description: "postgresql for pkking homelab"
   imageCatalogRef:
     apiGroup: postgresql.cnpg.io
-    kind: ImageCatalog
+    kind: ClusterImageCatalog
     name: postgresql
     major: 17
   instances: 1
