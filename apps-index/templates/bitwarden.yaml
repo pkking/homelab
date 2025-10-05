@@ -1,5 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
+metadata:
+  name: bitwarden-secrets
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -7,6 +9,7 @@ spec:
   - list:
       elements:
       - ns: postgresql-operator
+      - ns: sm-operator-system
   template:
     metadata:
       name: bitwarden-sm
