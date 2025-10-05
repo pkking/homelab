@@ -13,7 +13,7 @@ spec:
   generators:
   - list:
       elements:
-      - ns: postgresql-operator
+      - ns: postgres
   template:
     metadata:
       name: bitwarden-sm
@@ -31,4 +31,4 @@ spec:
           prune: true
           selfHeal: true
         syncOptions:
-          - CreateNamespace=false
+          - CreateNamespace=true
