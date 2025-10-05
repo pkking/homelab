@@ -9,8 +9,8 @@ metadata:
   name: argocd-cm
 data:
   resource.customizations: | 
-    -- from: https://github.com/argoproj/argo-cd/tree/c93924b3ccabdf769510db58b7684e3dc8a2d20c/resource_customizations/operators.coreos.com/Subscription
     operators.coreos.com/Subscription:
+      -- from: https://github.com/argoproj/argo-cd/tree/c93924b3ccabdf769510db58b7684e3dc8a2d20c/resource_customizations/operators.coreos.com/Subscription
       health.lua: |
         local health_status = {}
         if obj.status ~= nil then
@@ -64,8 +64,8 @@ data:
         health_status.message = "An install plan for a subscription is pending installation"
         return health_status
     postgresql.cnpg.io/Cluster: 
-      -- from: https://github.com/argoproj/argo-cd/blob/f4edcf7717940e44a141dadb5ca8c5fc11951cb2/resource_customizations/postgresql.cnpg.io/Cluster/health.lua
       health.lua: |
+        -- from: https://github.com/argoproj/argo-cd/blob/f4edcf7717940e44a141dadb5ca8c5fc11951cb2/resource_customizations/postgresql.cnpg.io/Cluster/health.lua
         local hs = {}
 
         local cnpgStatus = {
