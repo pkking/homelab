@@ -19,4 +19,4 @@ spec:
   name: "cloudnative-pg"
   source: "operatorhubio-catalog"
   sourceNamespace: "olm"
-  startingCSV: "1.27.0"
+  startingCSV: "cloudnative-pg.v1.27.0"
