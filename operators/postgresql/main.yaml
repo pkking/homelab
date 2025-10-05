@@ -5,7 +5,7 @@ metadata:
   name: postgres-og
 spec:
   targetNamespaces:
-    - postgres-operator
+    - postgres
 ---
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
