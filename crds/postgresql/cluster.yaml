@@ -5,7 +5,8 @@ metadata:
   description: "this pg is used by all homelab apps"
 spec:
   instances: 1
-  superuserSecret: "pg-superuser"
+  superuserSecret:
+    name: pg-superuser
   enableSuperuserAccess: true
   storage:
     size: 20Gi
