@@ -4,7 +4,11 @@ metadata:
   name: postgresql
 spec:
   description: "postgresql for pkking homelab"
-  imageName: ghcr.io/cloudnative-pg/postgresql:17.5
+  imageCatalogRef:
+    apiGroup: postgresql.cnpg.io
+    kind: ImageCatalog
+    name: postgresql
+    major: 17
   instances: 1
   superuserSecret:
     name: pg-superuser
