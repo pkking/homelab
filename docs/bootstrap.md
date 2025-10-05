@@ -20,10 +20,6 @@
 
 这里我使用的linux下的[安装方法](https://argocd-autopilot.readthedocs.io/en/stable/Installation-Guide/#linux-and-wsl-using-curl)
 
-```bash
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-```
-
 ### bootstrap Argo CD
 
 See [Autopilot documentation](https://argocd-autopilot.readthedocs.io/en/stable/Getting-Started/#bootstrap-argo-cd)
