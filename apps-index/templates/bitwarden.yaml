@@ -1,34 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
-  name: bitwarden-secrets
+  name: bitwarden-sm
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-wave: "2"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
-  generators:
-  - list:
-      elements:
-      - ns: postgres
-  template:
-    metadata:
-      name: 'bitwarden-sm-{{.ns}}'
-    spec:
-      project: default
-      source:
-        repoURL: https://charts.bitwarden.com/
-        targetRevision: 1.0.0
-        chart: sm-operator
-      destination:
-        server: https://kubernetes.default.svc
-        namespace: '{{.ns}}'
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-        syncOptions:
-          - CreateNamespace=true
+  project: default
+  source:
+    repoURL: https://charts.bitwarden.com/
+    targetRevision: 1.0.0
+    chart: sm-operator
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: sm-operator-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
