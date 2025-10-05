@@ -2,14 +2,15 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: postgresql
-  description: "this pg is used by all homelab apps"
 spec:
+  description: "postgresql for pkking homelab"
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.5
   instances: 1
   superuserSecret:
     name: pg-superuser
   enableSuperuserAccess: true
   storage:
-    size: 20Gi
+    size: 10Gi
     storageClass: "synology-csi-nfs-retain"
   postgresql:
     pg_hba:
