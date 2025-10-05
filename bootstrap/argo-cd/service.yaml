@@ -9,4 +9,4 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-server
 spec:
-  type: Loadbalancer
+  type: LoadBalancer
