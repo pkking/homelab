@@ -13,11 +13,19 @@ the structure looks like:
 ```
 
 # usage
-Since we are using argocd-autopilot to manage argocd itself, we can use the following command to create an application that points to this repository.
-
-```bash
-argocd-autopilot app create apps --app github.com/pkking/homelab/apps-index/ -p default --type helm
+When bootstrap a new argocd, run [argo cli](https://argo-cd.readthedocs.io/en/stable/cli_installation/)
 ```
+argocd login <url to argocd>
+argocd app create apps \
+    --sync-option Prune=true \
+    --sync-policy auto \
+    --self-heal \
+    --dest-namespace argocd \
+    --dest-server https://kubernetes.default.svc \
+    --repo https://github.com/pkking/homelab.git \
+    --path apps-index
+```
+This will automated sync all apps in cluster right now!
 
 # bootstrap
 
