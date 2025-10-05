@@ -1,4 +1,6 @@
 resources:
   - cluster.yaml
   - secrets.yaml
+  - https://raw.githubusercontent.com/cloudnative-pg/postgres-containers/main/Debian/ClusterImageCatalog-bookworm.yaml
+
 namespace: postgres
