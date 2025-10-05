@@ -58,7 +58,7 @@ storageClasses:
     parameters:
       protocol: "nfs"
       dsm: "192.168.50.225"
-      location: "/volume2"
+      location: "/volume1"
       mountPermissions: "0755"
     reclaimPolicy: Delete
     test: true
@@ -68,7 +68,7 @@ storageClasses:
     parameters:
       protocol: "nfs"
       dsm: "192.168.50.225"
-      location: "/volume2"
+      location: "/volume1"
       mountPermissions: "0755"
     reclaimPolicy: Retain
 test:
