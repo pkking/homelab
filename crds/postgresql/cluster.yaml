@@ -2,7 +2,6 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: postgresql
-  description: "this pg is used by all homelab apps"
 spec:
   instances: 1
   superuserSecret:
