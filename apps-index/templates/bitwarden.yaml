@@ -16,7 +16,7 @@ spec:
       - ns: postgres
   template:
     metadata:
-      name: bitwarden-sm
+      name: 'bitwarden-sm-{{.ns}}'
     spec:
       project: default
       source:
