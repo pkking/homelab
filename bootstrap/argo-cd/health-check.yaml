@@ -1,3 +1,5 @@
+# This file is a Kustomize patch for the argocd-cm ConfigMap.
+# It is not intended to be applied directly with kubectl.
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -6,7 +8,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-cm
 data:
-  resource.customizations: | # copied from https://github.com/argoproj/argo-cd/blob/master/resource_customizations/operators.coreos.com/Subscription/health.lua
+  resource.customizations: | # copied from https://github.com/argoproj/argo-cd/tree/c93924b3ccabdf769510db58b7684e3dc8a2d20c/resource_customizations/operators.coreos.com/Subscription
     operators.coreos.com/Subscription:
       health.lua: |
         local health_status = {}
