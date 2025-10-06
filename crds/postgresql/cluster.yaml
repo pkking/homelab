@@ -15,7 +15,7 @@ spec:
   enableSuperuserAccess: true
   storage:
     size: 10Gi
-    storageClass: "synology-csi-nfs-retain"
+    storageClass: "synology-csi-smb-retain"
   postgresql:
     pg_hba:
       - host all all 10.42.0.0/16 password
@@ -25,7 +25,3 @@ spec:
       owner: n8n
       secret:
         name: n8n-user
-    # Alternative bootstrap method: start from a backup
-    #recovery:
-    #  backup:
-    #    name: backup-example
