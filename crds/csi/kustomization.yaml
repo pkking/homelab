@@ -1,4 +1,4 @@
 resources:
   - secrets.yaml
 
-namespace: synology-csi-system
+namespace: n8n
