@@ -15,7 +15,7 @@ spec:
   enableSuperuserAccess: true
   storage:
     size: 10Gi
-    storageClass: "synology-csi-smb-retain"
+    storageClass: "synology-csi-iscsi-retain"
   postgresql:
     pg_hba:
       - host all all 10.42.0.0/16 password
