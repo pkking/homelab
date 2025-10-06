@@ -35,3 +35,6 @@ See [Autopilot documentation](https://argocd-autopilot.readthedocs.io/en/stable/
 ```bash
 kubectl delete -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 kubectl delete namespace argocd
+```
+
+NOTE: postgresql operator 需要创建`unix domain socket`， 而`k3s`的`containerd`因为默认启用了`cri-containerd.apparmor.d`这个规则，会阻止`unix domain socket`的创建，所以我们需要[禁用k3s containerd的 apparmor](https://github.com/cloudnative-pg/cloudnative-pg/issues/8752#issuecomment-3371857684)

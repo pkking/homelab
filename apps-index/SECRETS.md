@@ -11,5 +11,7 @@ kubectl create secret generic bw-auth-token -n sm-operator-system --from-literal
 
 NOTE: This secret needs to be created in each namespace that will use the operator, as the `BitwardenSecret` resource is namespace-scoped.
 
+NOTE1: You should assign the `machine account` to a project with read-only access permission which holds the secrets you want to sync to your cluster.
+
 The `TOKEN_HERE` should be the [access token](https://bitwarden.com/help/access-tokens/) created in [machine account](https://bitwarden.com/help/machine-accounts/)
 

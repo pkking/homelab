@@ -57,7 +57,7 @@ storageClasses:
       fsType: "ext4"
       dsm: "192.168.50.225"
       location: "/volume1"
-      formatOptions: "--nodiscard"
+      formatOptions: "-E nodiscard"
     reclaimPolicy: Delete
     allowVolumeExpansion: true
   iscsi-retain:
@@ -65,7 +65,7 @@ storageClasses:
       fsType: "ext4"
       dsm: "192.168.50.225"
       location: "/volume1"
-      formatOptions: "--nodiscard"
+      formatOptions: "-E nodiscard"
     reclaimPolicy: Retain
     allowVolumeExpansion: true
   nfs-delete:
@@ -75,7 +75,7 @@ storageClasses:
       protocol: "nfs"
       dsm: "192.168.50.225"
       location: "/volume1"
-      mountPermissions: "0755"
+      mountPermissions: "0777"
     reclaimPolicy: Delete
     test: true
   nfs-retain:
@@ -85,14 +85,14 @@ storageClasses:
       protocol: "nfs"
       dsm: "192.168.50.225"
       location: "/volume1"
-      mountPermissions: "0755"
+      mountPermissions: "0777"
     reclaimPolicy: Retain
   smb-retain:
     parameters:
       protocol: "smb"
       dsm: "192.168.50.225"
       location: "/volume1"
-      mountPermissions: "0755"
+      mountPermissions: "0777"
       csi.storage.k8s.io/node-stage-secret-name: "synology-csi-smb-user"
       csi.storage.k8s.io/node-stage-secret-namespace: "synology-csi-system"
     reclaimPolicy: Retain
@@ -101,7 +101,7 @@ storageClasses:
       protocol: "smb"
       dsm: "192.168.50.225"
       location: "/volume1"
-      mountPermissions: "0755"
+      mountPermissions: "0777"
       csi.storage.k8s.io/node-stage-secret-name: "synology-csi-smb-user"
       csi.storage.k8s.io/node-stage-secret-namespace: "synology-csi-system"
     reclaimPolicy: Delete
