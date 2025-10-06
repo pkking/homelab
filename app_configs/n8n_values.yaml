@@ -859,7 +859,7 @@ encryptionKey: ""
 existingEncryptionKeySecret: ""
 
 # -- For instance, the Schedule node uses it to know at what time the workflow should start. Find you timezone from here: https://momentjs.com/timezone/
-timezone: "Europe/Berlin"
+timezone: "Asia/Shanghai"
 
 # -- A locale identifier, compatible with the Accept-Language header. n8n doesn't support regional identifiers, such as de-AT.
 defaultLocale: en
