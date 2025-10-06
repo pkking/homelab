@@ -9,7 +9,7 @@ But we need to bootstrap a secret with the access token to allow the operator to
 kubectl create secret generic bw-auth-token -n sm-operator-system --from-literal=token="<TOKEN_HERE>"
 ```
 
-NOTE: each namespace that will use the operator need to have this secret created as the bitwardenSecret is namespace scoped.
+NOTE: This secret needs to be created in each namespace that will use the operator, as the `BitwardenSecret` resource is namespace-scoped.
 
 The `TOKEN_HERE` should be the [access token](https://bitwarden.com/help/access-tokens/) created in [machine account](https://bitwarden.com/help/machine-accounts/)
 
