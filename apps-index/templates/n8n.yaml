@@ -11,7 +11,7 @@ spec:
   project: default
   sources:
     # see https://artifacthub.io/packages/helm/community-charts/n8n
-    - repoURL: https://artifacthub.io/packages/helm/community-charts/n8n
+    - repoURL: https://community-charts.github.io/helm-charts
       targetRevision: 1.15.12
       chart: n8n
       helm:
