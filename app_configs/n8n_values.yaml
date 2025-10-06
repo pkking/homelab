@@ -346,9 +346,9 @@ main:
   # -- Persistence configuration for the main pod
   persistence:
     # -- Whether to enable persistence
-    enabled: false
+    enabled: true
     # -- Name of the volume to use for persistence
-    volumeName: ""
+    volumeName: "n8n-pvc"
     # -- Existing claim to use for persistence
     existingClaim: ""
     # -- Mount path for persistence
@@ -356,7 +356,7 @@ main:
     # -- Sub path for persistence
     subPath: ""
     # -- Storage class for persistence
-    storageClass: ""
+    storageClass: "synology-csi-nfs-retain"
     # -- Access mode for persistence
     accessMode: ReadWriteOnce
     # -- Size for persistence
