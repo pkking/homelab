@@ -76,6 +76,7 @@ storageClasses:
       dsm: "192.168.50.225"
       location: "/volume1"
       mountPermissions: "0777"
+      fsType: "btrfs"
     reclaimPolicy: Delete
     test: true
   nfs-retain:
@@ -86,9 +87,11 @@ storageClasses:
       dsm: "192.168.50.225"
       location: "/volume1"
       mountPermissions: "0777"
+      fsType: "btrfs"
     reclaimPolicy: Retain
   smb-retain:
     parameters:
+      fsType: "btrfs"
       protocol: "smb"
       dsm: "192.168.50.225"
       location: "/volume1"
@@ -99,6 +102,7 @@ storageClasses:
   smb-delete:
     parameters:
       protocol: "smb"
+      fsType: "btrfs"
       dsm: "192.168.50.225"
       location: "/volume1"
       mountPermissions: "0777"

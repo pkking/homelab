@@ -356,7 +356,7 @@ main:
     # -- Sub path for persistence
     subPath: ""
     # -- Storage class for persistence
-    storageClass: "synology-csi-nfs-retain"
+    storageClass: "synology-csi-iscsi-retain"
     # -- Access mode for persistence
     accessMode: ReadWriteOnce
     # -- Size for persistence
