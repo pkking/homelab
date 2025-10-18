@@ -5,8 +5,15 @@ All the secrets the homelab needed
 This is the only secret that should be created manually, once bitwarden-sm installed, all secret can be managed by [bitwarden secrets manager operator](https://bitwarden.com/help/secrets-manager-kubernetes-operator/#example-usage-chart)
 
 But we need to bootstrap a secret with the access token to allow the operator to fetch secrets from bitwarden vault.
+
 ```
-kubectl create secret generic bw-auth-token -n sm-operator-system --from-literal=token="<TOKEN_HERE>"
+kubectl create secret generic bw-auth-token -n <namespace> --from-literal=token="<TOKEN_HERE>"
+```
+
+The secret can be decode using the command:
+
+```
+kubectl get secret bw-auth-token -n <namespace> -o jsonpath='{.data.token}'|base64 -d
 ```
 
 NOTE: This secret needs to be created in each namespace that will use the operator, as the `BitwardenSecret` resource is namespace-scoped.
