@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-stack
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      chart: kube-prometheus-stack
+      targetRevision: 58.3.0 # 请根据需要选择一个稳定的版本
+      helm:
+        releaseName: kube-prometheus-stack
+        valuesFiles:
+          - "../../app_configs/monitoring_values.yaml"
+        valueFiles:
+          - $argocd-app-repo/crds/monitoring/secrets.yaml
+    - repoURL: https://github.com/pkking/homelab.git # 请替换为你的 Git 仓库地址
+      targetRevision: HEAD
+      path: crds/monitoring/
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
