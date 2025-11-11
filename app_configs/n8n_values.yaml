@@ -358,7 +358,7 @@ main:
     # -- Storage class for persistence
     storageClass: "synology-csi-iscsi-retain"
     # -- Access mode for persistence
-    accessMode: ReadWriteOnce
+    accessMode: ReadWriteMany
     # -- Size for persistence
     size: 8Gi
     # -- Annotations for persistence
